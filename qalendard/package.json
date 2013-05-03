@@ -1,0 +1,2 @@
+{ "name" : "qalendard",
+  "main" : "./lib/qalendard.js" }
