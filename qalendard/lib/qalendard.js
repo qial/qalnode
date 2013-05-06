@@ -1,5 +1,6 @@
 var schema = require('./schema.js');
 var url = require('url');
+var qs = require('querystring');
 
 function writeHelp(response,message) {
 
@@ -12,14 +13,15 @@ var roflInt = 0;
 
 var itemHandler = {
 	makeItem: function(request,response) {
+        console.log("makeItem");
 		var item = new schema.Item();
-		item.title = "Test Item "+roflInt;
+		item.title = "Test Item "+(roflInt++);
 		item.desc = "Test item description";
 		item.save();
-		writeHelp(response,"Made item.");
-
+        writeHelp(response,"{success: true}");
 	},
 	showItem: function(request,response,reqInfo) {
+        console.log("showItem");
 		var tmp = reqInfo.pathname.split("/item/show/");
 		var id = tmp[tmp.length-1];
 		schema.Item.find(function(err,items) {
@@ -37,6 +39,7 @@ var itemHandler = {
 		});
 	},
 	allItems: function(request,response) {
+        console.log("allItems");
 		schema.Item.find(function(err,items) {
 			if(err) {
 				console.log(err);
@@ -45,7 +48,36 @@ var itemHandler = {
 				writeHelp(response,str);
 			}
 		});
-	}
+	},
+    editItem: function(request,response,reqInfo) {
+        console.log("editItem");
+        if(request.method == 'POST') {
+        	var body = '';
+        	request.on('data', function(data) {
+        		body += data;
+        	});
+        	request.on('end', function() {
+        		var POST = qs.parse(body);
+        		console.log(POST);
+        		var Peval = eval(POST);
+        		console.log(Peval);
+        		var str = "";
+        		str += "id="+POST._id+"\n";
+        		str += "title="+POST.title+"\n";
+        		str += "desc="+POST.desc+"\n";
+        		str += "amount="+POST.amount+"\n";
+        		writeHelp(response,str);
+        	});
+        }
+        else {
+            writeHelp(response,"{success: true,notReal:true}");
+        }
+    },
+    deleteItem: function(request,response,reqInfo) {
+        console.log("deleteItem");
+
+        writeHelp(response,"{success: true}");
+    }
 };
 
 exports.server = function (request, response) {
@@ -63,6 +95,14 @@ exports.server = function (request, response) {
 		else if(reqInfo.pathname.lastIndexOf("/items",0) === 0) {
 			// starts with /items
 			itemHandler.allItems(request,response);
+		}
+		else if(reqInfo.pathname.lastIndexOf("/item/edit",0) === 0) {
+			// starts with /item/edit
+			itemHandler.editItem(request,response,reqInfo);
+		}
+		else if(reqInfo.pathname.lastIndexOf("/item/delete",0) === 0) {
+			// starts with /item/delete
+			itemHandler.deleteItem(request,response,reqInfo);
 		}
 	}
 	else {
