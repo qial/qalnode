@@ -1,0 +1,4 @@
+{
+	"name": "Qalendar Mongoose Schema",
+	"main": "./schema.js"
+}
