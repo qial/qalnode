@@ -1,5 +1,5 @@
 {
-  "name": "Qalendar Server",
+  "name": "qal",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,8 @@
     "jade": "*",
     "less-middleware": "*",
     "mongodb": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "passport": "*",
+    "passport-google": "*"
   }
 }

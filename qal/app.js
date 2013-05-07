@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
 //  , user = require('./routes/user')
   , item = require('./routes/item')
+  , auth = require('./routes/auth')
   , http = require('http')
   , path = require('path');
 
@@ -31,6 +32,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// "view" routes
 app.get('/', routes.index);
 
 // item routes
@@ -39,6 +41,10 @@ app.get( '/item/show/:id',item.show);
 app.post('/item/new(.json)?',item.create);
 app.post('/item/edit(.json)?',item.edit);
 app.post('/item/delete/:id?',item.remove);
+
+// service routes
+app.get('/auth/google',auth.googleAuth);
+app.get('/auth/google/return',auth.googleAuthReturn);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
