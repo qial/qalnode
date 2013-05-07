@@ -57,8 +57,17 @@ exports.show = function(req, res) {
  */
 exports.create = function(req, res) {
 	log("item.create");
-
-	res.send("create item");
+	var values = req.body;
+	delete values._id;
+	var item = new schema.Item(values);
+	item.save(function(err,updated) {
+		if(err) {
+			log("item.save error: ",err);
+			res.send("{success:false}");
+		} else {
+			res.send("{success:true,items:"+JSON.stringify(updated)+"}");
+		}
+	});
 };
 
 /*

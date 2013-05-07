@@ -35,8 +35,8 @@ app.get('/', routes.index);
 
 // item routes
 app.get( '/items(.json)?', item.list);
-app.get( '/item/new',item.create);
 app.get( '/item/show/:id',item.show);
+app.post('/item/new(.json)?',item.create);
 app.post('/item/edit(.json)?',item.edit);
 app.post('/item/delete/:id?',item.remove);
 
