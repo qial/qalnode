@@ -1,0 +1,60 @@
+Qalendar Notes:
+
+Users:
+	Needs:
+		id - user id number for internal use.
+		some way of authentication. I think google auth. Working on it.
+
+Items:
+	Needs:
+		title - Short name for the item
+		desc - a longer description if desired
+		date - the start time (or date) of the item
+		user - the qalendar user ID
+		task? - any Item marked as a task won't disappear automatically
+	Optionals:
+		endDate - the end time/date of the item
+		amount - the cost of the item (if applicable)
+	Questions:
+		- Do we need to store whether its a date + time or just a daily thing? Maybe a "day?" flag?
+
+Reminders:
+	Needs:
+		interval - amount of time before it creates a new task Item
+		startDate - the original begin date of the task
+		lastDate - the date the most recent Item was created
+		lastCompleted - the date the most recent Item was marked as completed 
+		enabled? - if a reminder is disabled, then it won't create new items
+	Optionals:
+		amount - money cost (e.g. car service cost)
+		strict? - My idea is that all Items created by a reminder can be flexible. I could push them 
+			off to a later day and it would show up then. But some tasks (like say a reminder to pay
+			rent) should always remind you on the same day, even if last time you pushed it off for
+			a bit. On the other hand, a reminder for something like cleaning a bathroom should take
+			into account that you pushed it off and just count the interval from the time you complete
+			the task. (There's no point in doubling up and cleaning your bathroom sooner next time 
+			just because you were busy and didn't get to it.) A "strict" task would be at the same
+			time each interval regardless of when you complete the task. A non-"strict" task would
+			begin the interval
+	Abilities:
+		- Create Items according to interval and related settings. 
+
+
+
+Ramblings
+---------
+How do we deal with how high/low priority something is? What about tasks I just want to make sure
+that I "do sometime this week"? 
+
+How do we deal with late Items that are marked as something that has to be "done" and marked off
+as done? Is there actually a major difference?
+
+What if I wanted to make a quick reminder for myself. Like I don't have time at the moment to do it
+but I want to make sure that I remember to do it "by the end of the day". Should there be an option
+for that? Should some of these options be user configurable? What if there was a set of reminder
+templates, and users could create their own? 
+
+How do Reminders create Items? Is this done server side? Client side? Server side but triggered by
+a client side update on that user? (This last one probably makes the most sense)
+
+
