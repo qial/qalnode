@@ -57,4 +57,8 @@ templates, and users could create their own?
 How do Reminders create Items? Is this done server side? Client side? Server side but triggered by
 a client side update on that user? (This last one probably makes the most sense)
 
+Can we algorithmically search for reminders and include items in the search somehow? How can we 
+search the reminders such that we figure out the date of a future item without explicitly making
+a new item at some time?
+
 
