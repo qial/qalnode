@@ -124,3 +124,13 @@ exports.remove = function(req, res) {
 
 };
 
+/*
+ * GET complete item
+ */
+exports.complete = function(req, res) {
+    log("item.complete");
+    
+    //TODO item completion
+    res.send("complete item");
+};
+
