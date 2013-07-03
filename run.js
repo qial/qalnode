@@ -1,6 +1,9 @@
-var http = require('http');
-var qalendard = require('./qalendard');
+// OLD start script
+// Use qal/app.js for the new qal node backend
 
-http.createServer(qalendard.server).listen(8124);
+//var http = require('http');
+//var qalendard = require('./qalendard');
 
-console.log('Server running at http://127.0.0.1:8124/');
+//http.createServer(qalendard.server).listen(8124);
+
+//console.log('Server running at http://127.0.0.1:8124/');

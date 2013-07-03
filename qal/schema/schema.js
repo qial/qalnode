@@ -12,6 +12,8 @@ db.once('open', function() {
 
 function buildSchema() {
 	buildItem();
+  buildUser();
+  buildReminder();
 }
 
 function buildUser() {
@@ -19,9 +21,9 @@ function buildUser() {
 		email: String,
 		id: number
 	});
-	
+
 	var User = db.model('User',userSchema);
-	
+
 	exports.User = User;
 }
 
@@ -48,8 +50,8 @@ function buildReminder() {
 		amount: Number,
 		strict: Boolean
 	});
-	
+
 	var Reminder = db.model('Reminder',reminderSchema);
-	
+
 	exports.Reminder = Reminder;
 }
