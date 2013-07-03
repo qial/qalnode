@@ -8,6 +8,7 @@ var express = require('express')
 //  , user = require('./routes/user')
   , item = require('./routes/item')
   , auth = require('./routes/auth')
+  , reminder = require('./routes/reminder')
   , http = require('http')
   , path = require('path');
 
@@ -40,7 +41,15 @@ app.get( '/items(.json)?', item.list);
 app.get( '/item/show/:id',item.show);
 app.post('/item/new(.json)?',item.create);
 app.post('/item/edit(.json)?',item.edit);
-app.post('/item/delete/:id?',item.remove);
+app.post('/item/complete/:id',item.complete);
+app.post('/item/delete/:id',item.remove);
+
+// reminder routes
+app.get( '/reminders(.json)?', reminder.list);
+app.get( '/reminder/show/:id',reminder.show);
+app.post('/reminder/new(.json)?',reminder.create);
+app.post('/reminder/edit(.json)?',reminder.edit);
+app.post('/reminder/delete/:id?',reminder.remove);
 
 // service routes
 app.get('/auth/google',auth.googleAuth);

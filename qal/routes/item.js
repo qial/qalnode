@@ -10,12 +10,11 @@ function log(msg,err) {
 /*
  * GET items listing.
  */
-
 exports.list = function(req, res){
 	log("item.list");
 	schema.Item.find(function(err,items) {
 		if(err) {
-			log(err);
+      log("item.list error:",err);
 		} else {
 			var str = "{items:"+JSON.stringify(items)+"}";
 			res.set('Content-Type', 'application/json');
@@ -82,7 +81,7 @@ exports.edit = function(req, res) {
 //	if(!id) {
 //		res.send("{success:false}");
 //	} else {
-	//var update = {};
+//  var update = {};
 	var update = req.body;
 	if( Object.prototype.toString.call( req.body ) === '[object Array]' ) {
 	    update = req.body[0];
@@ -97,21 +96,17 @@ exports.edit = function(req, res) {
 		} else if(item) {
 			//var str = "{items:"+JSON.stringify(items)+"}";
 			//res.send(str);
-			
+
 			res.set('Content-Type', 'application/json');
 			res.send("{success:true}");
 			item.save();
 		} else {
 			// WAT? I don't know what to do
-			log("HELP! " + item);
+			log("HELP! " + item,true);
 			res.set('Content-Type', 'application/json');
 			res.send("{success:false}");
 		}
 	});
-//	}
-	
-	
-	//res.send("edit item");
 };
 
 /*
@@ -120,8 +115,8 @@ exports.edit = function(req, res) {
 exports.remove = function(req, res) {
 	log("item.remove");
 
+  //TODO item removal
 	res.send("remove item");
-
 };
 
 /*
@@ -129,7 +124,7 @@ exports.remove = function(req, res) {
  */
 exports.complete = function(req, res) {
     log("item.complete");
-    
+
     //TODO item completion
     res.send("complete item");
 };

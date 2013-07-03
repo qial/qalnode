@@ -1,3 +1,4 @@
+// schema/plugins/lastMod.js
 module.exports = exports = function lastModifiedPlugin (schema, options) {
   schema.add({ lastMod: Date })
 

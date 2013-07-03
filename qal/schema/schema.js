@@ -2,6 +2,8 @@ var mongoose = require('mongoose')
   , db = mongoose.createConnection('localhost', 'test');
 
 db.on('error', console.error.bind(console, 'connection error:'));
+
+// open database connection, then build models
 db.once('open', function() {
 	console.log("Mongoose db connection finished!");
 	buildSchema();
@@ -17,10 +19,7 @@ function buildSchema() {
 }
 
 function buildUser() {
-	var userSchema = new mongoose.Schema({
-		email: String,
-		id: number
-	});
+	var userSchema = require('./user-schema.js');
 
 	var User = db.model('User',userSchema);
 
@@ -28,13 +27,7 @@ function buildUser() {
 }
 
 function buildItem() {
-  var itemSchema = new mongoose.Schema({
-		title: String,
-		desc: String,
-		amount: Number,
-		date: { type: Date, default: Date.now },
-		user: Number
-	});
+  var itemSchema = require('./item-schema.js');
 
 	var Item = db.model('Item', itemSchema);
 
@@ -42,14 +35,7 @@ function buildItem() {
 }
 
 function buildReminder() {
-	var reminderSchema = new mongoose.schema({
-		startDate: {type: Date, default: Date.now },
-		lastDate: {type: Date},
-		lastCompleted: {type: Date},
-		enabled: {type: Boolean},
-		amount: Number,
-		strict: Boolean
-	});
+	var reminderSchema = require('./reminder-schema.js');
 
 	var Reminder = db.model('Reminder',reminderSchema);
 
