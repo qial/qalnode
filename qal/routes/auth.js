@@ -5,11 +5,26 @@ var passport = require('passport')
 
 // simple serialization for now
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  //console.log("serializeUser: " + user);
+  var realUser = JSON.parse(JSON.stringify(user));
+  //console.log(realUser);
+  //console.log(realUser.uid);
+  done(null, realUser.uid);
 });
 
 passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+  //console.log("deserializeObj: "+obj);
+  //console.log(obj);
+  schema.User.findOne({ uid: obj }, function(err, user) {
+    if(err) {
+      console.log("deserializing object fail!",err);
+      done(err, user);
+    } else {
+      done(null, user);
+    }
+
+  });
+
 });
 
 /*
