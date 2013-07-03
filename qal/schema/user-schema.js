@@ -3,12 +3,15 @@
 
 // imports
 var mongoose = require('mongoose');
-var lastMod = require('plugins/lastMod');
+var lastMod = require('./plugins/lastMod');
 
 // build schema
 var User = new mongoose.Schema({
   email: String,
-  id: number
+  openId: String,
+  name: String,
+  firstName: String,
+  id: Number
 });
 User.plugin(lastMod);
 

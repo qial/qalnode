@@ -3,7 +3,7 @@
 
 // imports
 var mongoose = require('mongoose');
-var lastMod = require('plugins/lastMod');
+var lastMod = require('./plugins/lastMod');
 
 // build schema
 var Reminder = new mongoose.Schema({
