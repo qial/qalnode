@@ -4,11 +4,11 @@
  */
 
 var express = require('express')
-  , passport = require('passport')
+//  , passport = require('passport')
   , routes = require('./routes')
 //  , user = require('./routes/user')
   , item = require('./routes/item')
-  , auth = require('./routes/auth')
+//  , auth = require('./routes/auth')
   , reminder = require('./routes/reminder')
   , http = require('http')
   , path = require('path');
@@ -27,10 +27,10 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.session({ secret: 'wat is dis madness?' }));
   // passport stuff
-  app.use(passport.initialize());
-  app.use(passport.session());
+  //app.use(passport.initialize());
+  //app.use(passport.session());
   // less stuff?
-  app.use(require('less-middleware')({ src: __dirname + '/public' }));
+  app.use(require('less-middleware')(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(app.router);
 
@@ -58,8 +58,8 @@ app.configure(function() {
   app.post('/reminder/delete/:id?',reminder.remove);
 
   // service routes
-  app.get('/auth/google',auth.googleAuth);
-  app.get('/auth/google/return',auth.googleAuthReturn);
+  //app.get('/auth/google',auth.googleAuth);
+  //app.get('/auth/google/return',auth.googleAuthReturn);
 });
 
 http.createServer(app).listen(app.get('port'), function(){

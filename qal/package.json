@@ -10,8 +10,6 @@
     "jade": "*",
     "less-middleware": "*",
     "mongodb": "*",
-    "mongoose": "*",
-    "passport": "*",
-    "passport-google": "*"
+    "mongoose": "*"
   }
 }
