@@ -7,7 +7,7 @@ var express = require('express')
 //  , passport = require('passport')
   , routes = require('./routes')
 //  , user = require('./routes/user')
-  , item = require('./routes/item')
+  , event = require('./routes/event')
 //  , auth = require('./routes/auth')
   , reminder = require('./routes/reminder')
   , http = require('http')
@@ -43,12 +43,12 @@ app.configure(function() {
   app.get('/', routes.index);
 
   // item routes
-  app.get( '/items(.json)?', item.list);
-  app.get( '/item/show/:id',item.show);
-  app.post('/item/new(.json)?',item.create);
-  app.post('/item/edit(.json)?',item.edit);
-  app.post('/item/complete/:id',item.complete);
-  app.post('/item/delete/:id',item.remove);
+  app.get( '/events(.json)?', event.list);
+  app.get( '/event/show/:id',event.show);
+  app.post('/event/new(.json)?',event.create);
+  app.post('/event/edit(.json)?',event.edit);
+  app.post('/event/complete/:id',event.complete);
+  app.post('/event/delete/:id',event.remove);
 
   // reminder routes
   app.get( '/reminders(.json)?', reminder.list);

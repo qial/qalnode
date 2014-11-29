@@ -16,7 +16,7 @@ var Event = new mongoose.Schema({
 Event.plugin(lastMod);
 
 // export finished schema
-module.exports = exports = Item;
+module.exports = exports = Event;
 
 
 // plugin example game-schema.js

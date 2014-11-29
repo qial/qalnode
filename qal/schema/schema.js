@@ -13,7 +13,7 @@ db.once('open', function() {
 });
 
 function buildSchema() {
-	buildItem();
+	buildEvent();
   buildUser();
   buildReminder();
 }
@@ -26,12 +26,12 @@ function buildUser() {
 	exports.User = User;
 }
 
-function buildItem() {
-  var itemSchema = require('./item-schema.js');
+function buildEvent() {
+  var eventSchema = require('./event-schema.js');
 
-	var Item = db.model('Item', itemSchema);
+	var Event = db.model('Event', eventSchema);
 
-	exports.Item = Item;
+	exports.Event = Event;
 }
 
 function buildReminder() {
