@@ -4,17 +4,20 @@
 // imports
 var mongoose = require('mongoose');
 var lastMod = require('./plugins/lastMod');
+var tags = require('./plugins/tags');
 
 // build schema
 var Reminder = new mongoose.Schema({
-  startDate: {type: Date, default: Date.now },
-  lastDate: {type: Date},
-  lastCompleted: {type: Date},
-  enabled: {type: Boolean},
+  startDate: { type: Date, default: Date.now },
+  lastDate: { type: Date },
+  lastCompleted: { type: Date },
+  enabled: { type: Boolean },
   amount: Number,
   strict: Boolean
 });
+
 Reminder.plugin(lastMod);
+Reminder.plugin(tags);
 
 // export finished schema
 module.exports = exports = Reminder;

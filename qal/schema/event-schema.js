@@ -4,6 +4,7 @@
 // imports
 var mongoose = require('mongoose');
 var lastMod = require('./plugins/lastMod');
+var tags = require('./plugins/tags');
 
 // build schema
 var Event = new mongoose.Schema({
@@ -13,7 +14,9 @@ var Event = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   user: Number
 });
+
 Event.plugin(lastMod);
+Event.plugin(tags);
 
 // export finished schema
 module.exports = exports = Event;
