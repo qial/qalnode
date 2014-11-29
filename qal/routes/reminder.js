@@ -16,7 +16,7 @@ exports.list = function(req, res) {
     if(err) {
       log("reminder.list error:",err);
     } else {
-      var str = "{items:"+JSON.stringify(reminders)+"}";
+      var str = "{reminders:"+JSON.stringify(reminders)+"}";
       res.set('Content-Type', 'application/json');
       res.send(str);
     }

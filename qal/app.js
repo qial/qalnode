@@ -57,6 +57,9 @@ app.configure(function() {
   app.post('/reminder/edit(.json)?',reminder.edit);
   app.post('/reminder/delete/:id?',reminder.remove);
 
+  // app chunk routes
+  //app.get( '/chunk/items.html',
+
   // service routes
   //app.get('/auth/google',auth.googleAuth);
   //app.get('/auth/google/return',auth.googleAuthReturn);

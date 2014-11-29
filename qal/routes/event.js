@@ -8,9 +8,9 @@ function log(msg,err) {
 }
 
 function getAll(callback){
-	schema.Item.find(function(err,items) {
+	schema.Event.find(function(err,items) {
 		if(err) {
-      log("item.list error:",err);
+      log("event.list error:",err);
 		} else {
 			callback(items);
 		}
@@ -18,31 +18,31 @@ function getAll(callback){
 }
 
 /*
- * GET items listing.
+ * GET events listing.
  */
 exports.list = function(req, res){
-	log("item.list");
+	log("event.list");
   getAll(function(items) {
-    var str = "{items:"+JSON.stringify(items)+"}";
+    var str = "{events:"+JSON.stringify(items)+"}";
     res.set('Content-Type', 'application/json');
     res.send(str);
   });
 };
 
 exports.listHtml = function(req, res){
-	log("item.list view as html");
+	log("event.list view as html");
   getAll(function(items) {
-    var str = "{items:"+JSON.stringify(items)+"}";
+    var str = "{events:"+JSON.stringify(items)+"}";
     res.set('Content-Type', 'application/json');
     res.send(str);
   });
 };
 
 /*
- * GET single item
+ * GET single event
  */
 exports.show = function(req, res) {
-	log("item.show");
+	log("event.show");
 	var id = req.param('id');
 	if(!id) {
 		id = req.param('_id');
@@ -50,44 +50,43 @@ exports.show = function(req, res) {
 	if(!id) {
 		res.send("{success:false}");
 	} else {
-		schema.Item.findOne({_id: id}, function(err,item) {
+		schema.Event.findOne({_id: id}, function(err,item) {
 			if(err) {
-				log("item.show error: ",err);
+				log("event.show error: ",err);
 				res.set('Content-Type', 'application/json');
 				res.send("{success:false}");
 			} else {
-				var str = "{items:"+JSON.stringify(item)+"}";
+				var str = "{events:"+JSON.stringify(item)+"}";
 				res.set('Content-Type', 'application/json');
 				res.send(str);
 			}
 		});
 	}
-	//res.send("show item");
 };
 
 /*
- * POST create item
+ * POST create event
  */
 exports.create = function(req, res) {
-	log("item.create");
+	log("event.create");
 	var values = req.body;
 	delete values._id;
-	var item = new schema.Item(values);
-	item.save(function(err,updated) {
+	var event = new schema.Event(values);
+	event.save(function(err,updated) {
 		if(err) {
-			log("item.save error: ",err);
+			log("event.save error: ",err);
 			res.send("{success:false}");
 		} else {
-			res.send("{success:true,items:"+JSON.stringify(updated)+"}");
+			res.send("{success:true,events:"+JSON.stringify(updated)+"}");
 		}
 	});
 };
 
 /*
- * POST edit item
+ * POST edit event
  */
 exports.edit = function(req, res) {
-	log("item.edit");
+	log("event.edit");
 //	var id = req.param('id');
 //	if(!id) {
 //		id = req.param('_id');
@@ -102,9 +101,9 @@ exports.edit = function(req, res) {
 	}
 	var id = update["_id"];
 	delete update._id;
-	schema.Item.findByIdAndUpdate(id, update, function(err,item) {
+	schema.Event.findByIdAndUpdate(id, update, function(err,item) {
 		if(err) {
-			log("item.edit error: ",err);
+			log("event.edit error: ",err);
 			res.set('Content-Type', 'application/json');
 			res.send("{success:false}");
 		} else if(item) {
@@ -124,22 +123,22 @@ exports.edit = function(req, res) {
 };
 
 /*
- * GET remove item
+ * GET remove event
  */
 exports.remove = function(req, res) {
-	log("item.remove");
+	log("event.remove");
 
   //TODO item removal
-	res.send("remove item");
+	res.send("remove event");
 };
 
 /*
- * GET complete item
+ * GET complete event
  */
 exports.complete = function(req, res) {
-    log("item.complete");
+    log("event.complete");
 
-    //TODO item completion
-    res.send("complete item");
+    //TODO event completion
+    res.send("complete event");
 };
 
