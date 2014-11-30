@@ -4,6 +4,7 @@
 // imports
 var mongoose = require('mongoose');
 var uuid = require('mongoose-uuid');
+var createdOn = require('./plugins/createdOn');
 var lastMod = require('./plugins/lastMod');
 
 // build schema
@@ -12,6 +13,8 @@ var User = new mongoose.Schema({
   password: String,
   name: String
 }, {_id: false});
+
+User.plugin(createdOn);
 User.plugin(lastMod);
 User.plugin(uuid.plugin);
 

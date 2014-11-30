@@ -4,6 +4,7 @@
 // imports
 var mongoose = require('mongoose');
 var uuid = require('mongoose-uuid');
+var createdOn = require('./plugins/createdOn');
 var lastMod = require('./plugins/lastMod');
 var tags = require('./plugins/tags');
 
@@ -17,6 +18,7 @@ var Reminder = new mongoose.Schema({
   strict: Boolean
 });
 
+Reminder.plugin(createdOn);
 Reminder.plugin(lastMod);
 Reminder.plugin(tags);
 Reminder.plugin(uuid.plugin);
