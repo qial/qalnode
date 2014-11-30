@@ -9,7 +9,7 @@ exports.account = function(req, res){
  * GET register page
  */
 exports.register = function(req, res){
-  res.render('register', {});
+  res.render('account/register', {title:'Register'});
 };
 
 /*
@@ -25,6 +25,13 @@ exports.forgot = function(req, res){
  */
 exports.reset = function(req, res){
   res.send('reset password page (requires uuid link)');
+};
+
+/*
+ * POST create account service
+ */
+exports.create = function(req, res){
+  res.send('create account');
 };
 
 /*

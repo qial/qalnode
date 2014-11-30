@@ -43,6 +43,7 @@ app.configure(function() {
   app.get( '/account/register', account.register);
   app.get( '/account/forgot', account.forgot);
   app.get( '/account/reset', account.reset);
+  app.post('/account/create', account.create);
   app.post('/account/resetpassword', account.resetpassword);
   app.post('/account/changepassword', account.changepassword);
   app.post('/account/login', account.login);

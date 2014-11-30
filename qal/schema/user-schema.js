@@ -21,7 +21,6 @@ User.plugin(uuid.plugin);
 // export finished schema
 module.exports = exports = User;
 
-
 // plugin example game-schema.js
 //var lastMod = require('./lastMod');
 //var Game = new Schema({ ... });

@@ -5,10 +5,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block body
-      div.title= title
       div.account
         block account
-          span= 'Login'
+          span.login
+            a(href='/')= 'Login'
+      div.title
+        h1= title
       div.content
         block content
           div.reminders

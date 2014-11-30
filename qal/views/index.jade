@@ -8,7 +8,7 @@ block content
       input(type='password', name='password', placeholder='Password')
       input(type='submit')
   div.infobox
-    a(href='/account/register')
-      span= 'Register'
-    a(herf='/account/forgot')
-      span= 'Forgot your password?'
+    span.left
+      a(href='/account/register')= 'Register'
+    span.right
+      a(href='/account/forgot')= 'Forgot your password?'
