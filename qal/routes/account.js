@@ -1,3 +1,12 @@
+var schema = require('../schema');
+
+function log(msg,err) {
+	// do nothing
+	if(err) {
+		console.log(msg,err);
+	}
+}
+
 /*
  * GET account info page
  */
@@ -16,7 +25,7 @@ exports.register = function(req, res){
  * GET forgot password page
  */
 exports.forgot = function(req, res){
-  res.render('forgot', {});
+  res.render('account/forgot', {title:'Forgot Password'});
 };
 
 /*
@@ -31,7 +40,24 @@ exports.reset = function(req, res){
  * POST create account service
  */
 exports.create = function(req, res){
-  res.send('create account');
+  //res.send('create account');
+  log("user.create");
+	var values = req.body;
+  console.log(values);
+	delete values._id;
+  //TODO: double check password confirmation first
+  //TODO: check that the email isn't taken already
+  delete values.confirm;
+	var user = new schema.User(values);
+	user.save(function(err,updated) {
+		if(err) {
+			log("user.save error: ",err);
+			res.send("{success:false}");
+		} else {
+			//res.send("{success:true,user:"+JSON.stringify(updated)+"}");
+      res.send("{success:true}");
+		}
+	});
 };
 
 /*

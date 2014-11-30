@@ -35,8 +35,11 @@ app.configure(function() {
     app.use(express.errorHandler());
   }
 
-  // "view" routes
+  // static-ish "view" routes
   app.get( '/', routes.index);
+
+  // application routes
+  app.get( '/main', routes.main);
 
   // account routes
   app.get( '/account', account.account);
