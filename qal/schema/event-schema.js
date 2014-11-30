@@ -3,6 +3,7 @@
 
 // imports
 var mongoose = require('mongoose');
+var uuid = require('mongoose-uuid');
 var lastMod = require('./plugins/lastMod');
 var tags = require('./plugins/tags');
 
@@ -17,6 +18,7 @@ var Event = new mongoose.Schema({
 
 Event.plugin(lastMod);
 Event.plugin(tags);
+Event.plugin(uuid.plugin);
 
 // export finished schema
 module.exports = exports = Event;

@@ -3,17 +3,17 @@
 
 // imports
 var mongoose = require('mongoose');
+var uuid = require('mongoose-uuid');
 var lastMod = require('./plugins/lastMod');
 
 // build schema
 var User = new mongoose.Schema({
   email: String,
-  openId: String,
-  name: String,
-  firstName: String,
-  id: Number
-});
+  password: String,
+  name: String
+}, {_id: false});
 User.plugin(lastMod);
+User.plugin(uuid.plugin);
 
 // export finished schema
 module.exports = exports = User;

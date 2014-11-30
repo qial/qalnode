@@ -4,4 +4,20 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    block body
+      div.title= title
+      div.account
+        block account
+          span= 'Login'
+      div.content
+        block content
+          div.reminders
+            block reminders
+              p= 'Reminders'
+          div.events
+            block events
+              p= 'Event listing'
+          div.menu
+            block menu
+              p= 'Base menu'
+

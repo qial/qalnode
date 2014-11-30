@@ -4,11 +4,9 @@
  */
 
 var express = require('express')
-//  , passport = require('passport')
   , routes = require('./routes')
-//  , user = require('./routes/user')
+  , account = require('./routes/account')
   , event = require('./routes/event')
-//  , auth = require('./routes/auth')
   , reminder = require('./routes/reminder')
   , http = require('http')
   , path = require('path');
@@ -26,9 +24,7 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.session({ secret: 'wat is dis madness?' }));
-  // passport stuff
-  //app.use(passport.initialize());
-  //app.use(passport.session());
+
   // less stuff?
   app.use(require('less-middleware')(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
@@ -40,7 +36,10 @@ app.configure(function() {
   }
 
   // "view" routes
-  app.get('/', routes.index);
+  app.get( '/', routes.index);
+
+  // account services
+  //app.post('/',
 
   // item routes
   app.get( '/events(.json)?', event.list);

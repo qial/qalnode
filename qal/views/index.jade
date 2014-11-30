@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.form
+    h2= 'Please enter your email and password to begin'
+    form(id='login', name='login', action='/account/login', method='POST')
+      input(type='text', name='email', placeholder='Email')
+      input(type='password', name='password', placeholder='Password')
+      input(type='submit')
