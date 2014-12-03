@@ -4,3 +4,4 @@ node_modules/
 .settings/
 .c9revisions/
 *.css
+npm-debug.log
