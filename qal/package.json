@@ -11,6 +11,7 @@
     "less-middleware": "*",
     "mongodb": "*",
     "mongoose": "*",
+    "mongoose-timestamp": "*",
     "mongoose-uuid": "*"
   }
 }

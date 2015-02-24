@@ -14,8 +14,8 @@ db.once('open', function() {
 
 function buildSchema() {
 	buildEvent();
-  buildUser();
-  buildReminder();
+	buildUser();
+	buildReminder();
 }
 
 function buildUser() {

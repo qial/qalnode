@@ -128,9 +128,17 @@ exports.edit = function(req, res) {
 exports.remove = function(req, res) {
 	log("event.remove");
 
-  //TODO item removal
+	//TODO item removal
 	res.send("remove event");
 };
+
+/*
+ * GET search events
+ */
+exports.search = function(req, res) {
+	log("event.search");
+
+}
 
 /*
  * GET complete event

@@ -4,8 +4,7 @@
 // imports
 var mongoose = require('mongoose');
 var uuid = require('mongoose-uuid');
-var createdOn = require('./plugins/createdOn');
-var lastMod = require('./plugins/lastMod');
+var timestamps = require('mongoose-timestamp');
 var tags = require('./plugins/tags');
 
 // build schema
@@ -17,8 +16,7 @@ var Event = new mongoose.Schema({
   user: Number
 });
 
-Event.plugin(createdOn);
-Event.plugin(lastMod);
+Event.plugin(timestamps);
 Event.plugin(tags);
 Event.plugin(uuid.plugin);
 

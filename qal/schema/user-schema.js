@@ -4,8 +4,7 @@
 // imports
 var mongoose = require('mongoose');
 var uuid = require('mongoose-uuid');
-var createdOn = require('./plugins/createdOn');
-var lastMod = require('./plugins/lastMod');
+var timestamp = require('mongoose-timestamp');
 
 // build schema
 var User = new mongoose.Schema({
@@ -14,8 +13,7 @@ var User = new mongoose.Schema({
   name: String
 }, {_id: false});
 
-User.plugin(createdOn);
-User.plugin(lastMod);
+User.plugin(timestamp);
 User.plugin(uuid.plugin);
 
 // export finished schema
